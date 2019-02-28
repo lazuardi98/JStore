@@ -9,46 +9,61 @@ public class Invoice
 {
     // instance variables - replace the example below with your own
     private int id;
-    private int idItem;
+    private Item item;
     private String date;
     private int totalPrice;
+    private int idItem;
     /**
      * Constructor for objects of class Invoice
      */
-    public Invoice()
+    public Invoice(int id, Item item, String date, int totalPrice)
     {
-       
+        this.id = id;
+        this.item = item;
+        this.date = date;
+        this.totalPrice = totalPrice;
     }
 
-    public int getId() {
+    public int getId(){
         return id;
     }
-
-    public void setId(int id) {
-        this.id = id;
+    
+    public Item getItem(){
+        return item;
     }
-
-    public int getIdItem() {
+    
+    public String getDate(){
+        return date;
+    }
+    
+    public int getTotalPrice(){
+        return totalPrice;
+    }
+    
+    public int getIdItem(){
         return idItem;
     }
 
-    public void setIdItem(int idItem) {
-        this.idItem = idItem;
+    public void setId(int id){
+        this.id = id;
+    }
+    
+    public void setItem(Item item){
+        this.item = item;
     }
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
+    public void setDate(String date){
         this.date = date;
     }
 
-    public int getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(int totalPrice) {
+    public void setTotalPrice(int totalPrice){
         this.totalPrice = totalPrice;
+    }
+    
+    public void setIdItem(int idItem){
+        this.idItem = idItem;
+    }
+    
+    public void printData(){
     }
 }

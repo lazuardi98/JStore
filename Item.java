@@ -13,57 +13,70 @@ public class Item
     private int stock;
     private int price;
     private String category;
+    private Supplier supplier;
     
     /**
      * Constructor for objects of class Item
      */
-    public Item()
+    public Item(int id, String name, int stock, int price, String category, Supplier supplier)
     {
         // initialise instance variables
-       this.id = 0;
-       this.stock = 0;
-       this.price = 0;
-       this.name = "";
-       this.category = "";
+       this.id = id;
+       this.name = name;
+       this.stock = stock;
+       this.price = price;
+       this.category = category;
+       this.supplier = supplier;
     }
 
-    public int getId() {
+    public int getId(){
         return id;
     }
 
-    public void setId(int id) {
+    public String getName(){
+        return name;
+    }
+    
+    public int getStock(){
+        return stock;
+    }
+    
+    public int getPrice(){
+        return price;
+    }
+    
+    public String getCategory(){
+        return category;
+    }
+    
+    public Supplier getSupplier(){
+        return supplier;
+    }
+    
+    public void setId(int id){
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    public void setName(String name){
         this.name = name;
     }
 
-    public int getStock() {
-        return stock;
-    }
-
-    public void setStock(int stock) {
+    public void setStock(int stock){
         this.stock = stock;
     }
 
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
+    public void setPrice(int price){
         this.price = price;
     }
 
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
+    public void setCategory(String category){
         this.category = category;
+    }
+    
+    public void setSupplier(Supplier supplier){
+        this.supplier = supplier;
+    }
+    
+    public void printData(){
     }
 }

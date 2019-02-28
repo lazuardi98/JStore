@@ -9,6 +9,7 @@ public class DatabaseItem
 {
     // instance variables - replace the example below with your own
     private String[] listItem;
+    private Item item;
 
     /**
      * Constructor for objects of class DatabaseItem
@@ -24,6 +25,6 @@ public class DatabaseItem
     public void removeItem(){
     }
     
-    public void getItemDatabase()}{
+    public void getItemDatabase(){
     }
 }
