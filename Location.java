@@ -1,23 +1,24 @@
 
 /**
- * Write a description of class Location here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * The Location program implements
+ * state, behavior, and identity
+ * of location.
+ * 
+ * @author Lazuardi Naufal / 1606880573
+ * @version 2.0
+ * @since 28-02-2019
  */
 public class Location
 {
-    // instance variables - replace the example below with your own
+    // instance variables
     private String province;
     private String description;
     private String city;
-
     /**
      * Constructor for objects of class Location
      */
     public Location(String city, String province, String description)
     {
-        // initialise instance variables
         this.city = city;
         this.province = province;
         this.description = description;
@@ -54,5 +55,9 @@ public class Location
     }
     
     public void printData(){
+        System.out.println("########## LOCATION ##########");
+        System.out.println("Province: " + this.province);
+        System.out.println("City: " + this.city);
+        System.out.println("Description: " + this.description);
     }
 }

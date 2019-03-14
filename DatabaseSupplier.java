@@ -1,24 +1,17 @@
 
 /**
- * Write a description of class DatabaseSupplier here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * The DatabaseSupplier program implements an application
+ * that configure the database for supplier.
+ * 
+ * @author Lazuardi Naufal / 1606880573
+ * @version 2.0
+ * @since 28-02-2019
  */
 public class DatabaseSupplier
 {
-    // instance variables - replace the example below with your own
+    // instance variables
     private String[] listSupplier;
     private Supplier supplier;
-
-    /**
-     * Constructor for objects of class DatabaseSupplier
-     */
-    public DatabaseSupplier()
-    {
-        // initialise instance variables
-        
-    }
 
     /**
      * An example of a method - replace this comment with your own
@@ -26,6 +19,19 @@ public class DatabaseSupplier
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public void addSupplier(){
+    public boolean addSupplier(Supplier supplier){
+        return true;
+    }
+    
+    public boolean removeSupplier(Supplier supplier){
+        return false;
+    }
+    
+    public Supplier getSupplier(){
+        return supplier;
+    }
+    
+    public String[] getListSupplier(){
+        return listSupplier;
     }
 }

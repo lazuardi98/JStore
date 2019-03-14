@@ -1,13 +1,16 @@
 
 /**
- * Write a description of class Supplier here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * The Supplier program implements
+ * state, behavior, and identity
+ * of supplier.
+ * 
+ * @author Lazuardi Naufal / 1606880573
+ * @version 2.0
+ * @since 28-02-2019
  */
 public class Supplier
 {
-    // instance variables - replace the example below with your own
+    // instance variables
     private int id;
     private String name;
     private String email;
@@ -76,5 +79,11 @@ public class Supplier
     }
     
     public void printData(){
+        System.out.println("########## SUPPLIER ##########");
+        System.out.println("ID: " + this.id);
+        System.out.println("Name: " + this.name);
+        System.out.println("Email: " + this.email);
+        System.out.println("Phone Number: " + this.phoneNumber);
+        System.out.println("Location: " + this.location);
     }
 }

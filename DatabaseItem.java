@@ -1,30 +1,31 @@
 
 /**
- * Write a description of class DatabaseItem here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * The DatabaseItem program implements an application
+ * that configure the database for item.
+ * 
+ * @author Lazuardi Naufal / 1606880573
+ * @version 2.0
+ * @since 28-02-2019
  */
 public class DatabaseItem
 {
-    // instance variables - replace the example below with your own
+    // instance variables
     private String[] listItem;
-    private Item item;
+    public static Item itemDB;
 
-    /**
-     * Constructor for objects of class DatabaseItem
-     */
-    public DatabaseItem()
-    {
-        
+    public static boolean addItem(Item item){
+        return true;
     }
     
-    public void addItem(){
+    public static boolean removeItem(Item item){
+        return false;
     }
     
-    public void removeItem(){
+    public static Item getItem(){
+        return itemDB;
     }
     
-    public void getItemDatabase(){
+    public String[] getItemDatabase(){
+        return listItem;
     }
 }
