@@ -14,11 +14,20 @@ public class DatabaseItem
     public static Item itemDB;
 
     public static boolean addItem(Item item){
-        return true;
+        if (itemDB != item){
+            itemDB = item;
+            return true;
+        }
+        else {
+            DatabaseItem.removeItem(item);
+            itemDB = item;
+            return false;
+        }
     }
     
     public static boolean removeItem(Item item){
-        return false;
+        itemDB = null;
+        return true;
     }
     
     public static Item getItem(){

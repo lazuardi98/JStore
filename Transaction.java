@@ -8,6 +8,8 @@ import java.time.LocalDate;
 public class Transaction
 {
     // instance variables - replace the example below with your own
+    private static LocalDate localdate = LocalDate.now();
+    private static String date = localdate.toString();
 
     /**
      * Constructor for objects of class Transaction
@@ -22,66 +24,60 @@ public class Transaction
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public static void orderNewItem(Supplier supplier)
+    public static void orderNewItem(Item item)
     {
-        Item item = new Item(1, "Laptop", 5, ItemStatus.New, 5000000, supplier, ItemCategory.Electronics);
-        DatabaseItem.addItem(item);
-        LocalDate date = LocalDate.now();
-        Invoice invoice = new Invoice(1, item, date.toString(), 5000000, 2, InvoiceStatus.Paid);
-        item.setStatus(ItemStatus.New);
-        invoice.setInvoiceStatus(InvoiceStatus.Paid);
-        item.printData();
-        invoice.printData();
+        Invoice invoice = new Buy_Paid(1, item, date, 5, item.getPrice());
+        if(invoice instanceof Sell_Paid)
+        {
+            System.out.println("Benar Invoice Type adalah Sell_Paid");
+        }
+        else
+        {
+            System.out.println("Salah, Invoice Type bukan Sell_Paid");
+        }
     }
     
-    public static void orderSecondItem(Supplier supplier)
+    public static void orderSecondItem(Item item)
     {
-        Item item = new Item(1, "Laptop", 5, ItemStatus.New, 3000000, supplier, ItemCategory.Electronics);
-        DatabaseItem.addItem(item);
-        LocalDate date = LocalDate.now();
-        Invoice invoice = new Invoice(1, item, date.toString(), 3000000, 2, InvoiceStatus.Paid);
-        item.setStatus(ItemStatus.Second);
-        invoice.setInvoiceStatus(InvoiceStatus.Paid);
-        item.printData();
-        invoice.printData();
+        Invoice invoice = new Buy_Paid(1, item, date, 5, item.getPrice());
+        if(invoice instanceof Sell_Paid)
+        {
+            System.out.println("Benar Invoice Type adalah Sell_Paid");
+        }
+        else
+        {
+            System.out.println("Salah, Invoice Type bukan Sell_Paid");
+        }
     }
     
-    public static void orderRefurbishedItem(Supplier supplier)
+    public static void orderRefurbishedItem(Item item)
     {
-        Item item = new Item(1, "Laptop", 5, ItemStatus.New, 4000000, supplier, ItemCategory.Electronics);
-        DatabaseItem.addItem(item);
-        LocalDate date = LocalDate.now();
-        Invoice invoice = new Invoice(1, item, date.toString(), 4000000, 2, InvoiceStatus.Paid);
-        item.setStatus(ItemStatus.Refurbished);
-        invoice.setInvoiceStatus(InvoiceStatus.Paid);
-        item.printData();
-        invoice.printData();
+        Invoice invoice = new Buy_Paid(1, item, date, 5, item.getPrice());
+        if(invoice instanceof Sell_Paid)
+        {
+            System.out.println("Benar Invoice Type adalah Sell_Paid");
+        }
+        else
+        {
+            System.out.println("Salah, Invoice Type bukan Sell_Paid");
+        }
     }
     
     public static void sellItemPaid(Item item)
     {
-        LocalDate date = LocalDate.now();
-        Invoice invoice = new Invoice(1, item, date.toString(), 5000000, 2, InvoiceStatus.Paid);
-        invoice.setInvoiceStatus(InvoiceStatus.Paid);
-        item.setStatus(ItemStatus.Sold);
-        invoice.printData();
+        Invoice invoice = new Sell_Paid(1, item, date, 3, item.getPrice());
+        item.printData();
     }
     
     public static void sellItemUnpaid(Item item)
     {
-        LocalDate date = LocalDate.now();
-        Invoice invoice = new Invoice(1, item, date.toString(), 5000000, 2, InvoiceStatus.Paid);
-        invoice.setInvoiceStatus(InvoiceStatus.Unpaid);
-        item.setStatus(ItemStatus.Sold);
-        invoice.printData();
+        Invoice invoice = new Sell_Unpaid(1, item, date, 3, item.getPrice(), "30-Mar-19");
+        item.printData();
     }
     
     public static void sellItemInstallment(Item item)
     {
-        LocalDate date = LocalDate.now();
-        Invoice invoice = new Invoice(1, item, date.toString(), 5000000, 2, InvoiceStatus.Paid);
-        invoice.setInvoiceStatus(InvoiceStatus.Installment);
-        item.setStatus(ItemStatus.Sold);
-        invoice.printData();
+        Invoice invoice = new Sell_Installment(1, item, date, 3, item.getPrice(), 2);
+        item.printData();
     }
 }

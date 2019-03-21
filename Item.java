@@ -96,6 +96,6 @@ public class Item
         System.out.println("Name: " + this.name);
         System.out.println("Category: " + this.category );
         System.out.println("Status: " + this.status);
-        System.out.println("Supplier: " + this.supplier);
+        System.out.println("Supplier: " + this.supplier.getName());
     }
 }

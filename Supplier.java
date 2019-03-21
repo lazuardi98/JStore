@@ -84,6 +84,6 @@ public class Supplier
         System.out.println("Name: " + this.name);
         System.out.println("Email: " + this.email);
         System.out.println("Phone Number: " + this.phoneNumber);
-        System.out.println("Location: " + this.location);
+        System.out.println("Location: " + this.location.getCity());
     }
 }

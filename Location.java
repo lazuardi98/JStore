@@ -14,6 +14,7 @@ public class Location
     private String province;
     private String description;
     private String city;
+    private Location loca;
     /**
      * Constructor for objects of class Location
      */

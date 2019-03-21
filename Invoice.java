@@ -8,56 +8,51 @@
  * @version 2.0
  * @since 28-02-2019
  */
-public class Invoice
+public abstract class Invoice
 {
     // instance variables
     private int id;
     private Item item;
     private String date;
-    private int totalPrice;
+    protected int totalPrice;
     private int totalItem;
     private InvoiceStatus status;
-    private int idItem;
+    private InvoiceType type;
     /**
      * Constructor for objects of class Invoice
      */
-    public Invoice(int id, Item item, String date, int totalPrice, int totalItem, InvoiceStatus status)
+    public Invoice(int id, Item item, String date, int totalItem, int totalPrice)
     {
         this.id = id;
         this.item = item;
         this.date = date;
-        this.totalPrice = totalPrice;
         this.totalItem = totalItem;
-        this.status = status;
+        this.totalPrice = totalPrice;
     }
 
     public int getId(){
-        return id;
+        return this.id;
     }
     
     public Item getItem(){
-        return item;
+        return this.item;
     }
     
     public String getDate(){
-        return date;
+        return this.date;
     }
     
     public int getTotalPrice(){
-        return totalPrice;
+        return this.totalPrice;
     }
     
     public int getTotalItem(){
-        return totalItem;
+        return this.totalItem;
     }
     
-    public InvoiceStatus getInvoiceStatus(){
-        return status;
-    }
+    public abstract InvoiceStatus getInvoiceStatus();
     
-    public int getIdItem(){
-        return idItem;
-    }
+    public abstract InvoiceType getInvoiceType();
 
     public void setId(int id){
         this.id = id;
@@ -83,17 +78,5 @@ public class Invoice
         this.status = status;
     }
     
-    public void setIdItem(int idItem){
-        this.idItem = idItem;
-    }
-    
-    public void printData(){
-        System.out.println("########## INVOICE ##########");
-        System.out.println("ID: " + this.id);
-        System.out.println("Date: " + this.item);
-        System.out.println("Item: " + this.date);
-        System.out.println("Total Item: " + this.totalItem);
-        System.out.println("Total Price: " + this.totalPrice);
-        System.out.println("Status: " + this.status);
-    }
+    public abstract void printData();
 }
