@@ -90,6 +90,10 @@ public class Item
         this.supplier = supplier;
     }
     
+    public String toString(){
+        return name;
+    }
+    
     public void printData(){
         System.out.println("########## ITEM ##########");
         System.out.println("ID: " + this.id);

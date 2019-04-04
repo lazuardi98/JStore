@@ -1,4 +1,5 @@
-
+import java.util.Date;
+import java.util.Calendar;
 /**
  * The Invoice program implements
  * state, behavior, and identity
@@ -13,21 +14,20 @@ public abstract class Invoice
     // instance variables
     private int id;
     private Item item;
-    private String date;
-    protected int totalPrice;
+    private Calendar date = Calendar.getInstance();
+    private int totalPrice;
     private int totalItem;
-    private InvoiceStatus status;
-    private InvoiceType type;
+    //private InvoiceStatus status;
+    //private InvoiceType type;
     /**
      * Constructor for objects of class Invoice
      */
-    public Invoice(int id, Item item, String date, int totalItem, int totalPrice)
+    public Invoice(int id, Item item, int totalItem)
     {
         this.id = id;
         this.item = item;
-        this.date = date;
         this.totalItem = totalItem;
-        this.totalPrice = totalPrice;
+        this.totalPrice = item.getPrice()*this.totalItem;
     }
 
     public int getId(){
@@ -38,7 +38,7 @@ public abstract class Invoice
         return this.item;
     }
     
-    public String getDate(){
+    public Calendar getDate(){
         return this.date;
     }
     
@@ -62,7 +62,7 @@ public abstract class Invoice
         this.item = item;
     }
 
-    public void setDate(String date){
+    public void setDate(Calendar date){
         this.date = date;
     }
 
@@ -74,9 +74,13 @@ public abstract class Invoice
         this.totalItem = totalItem;
     }
     
-    public void setInvoiceStatus(InvoiceStatus status){
+    /*public void setInvoiceStatus(InvoiceStatus status){
         this.status = status;
-    }
+    }*/
     
     public abstract void printData();
+    
+    public String toString(){
+        return item.toString();
+    } 
 }

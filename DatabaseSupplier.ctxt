@@ -9,5 +9,5 @@ comment2.target=boolean\ removeSupplier(Supplier)
 comment3.params=
 comment3.target=Supplier\ getSupplier()
 comment4.params=
-comment4.target=java.lang.String[]\ getListSupplier()
+comment4.target=Supplier[]\ getListSupplier()
 numComments=5

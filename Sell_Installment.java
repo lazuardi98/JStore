@@ -12,14 +12,16 @@ public class Sell_Installment extends Invoice
     private static InvoiceStatus INVOICE_STATUS = InvoiceStatus.Installment;
     private int installmentPeriod;
     private int installmentPrice;
+    private Customer customer;
 
     /**
      * Constructor for objects of class Sell_Installment
      */
-    public Sell_Installment(int id, Item item, String date, int totalItem, int totalPrice, int installmentPeriod)
+    public Sell_Installment(int id, Item item, int totalItem, int installmentPeriod, Customer customer)
     {
         // initialise instance variables
-        super(id, item, date, totalItem, totalPrice);
+        super(id, item, totalItem);
+        setCustomer(customer);
         this.installmentPeriod = installmentPeriod;
     }
 
@@ -37,6 +39,10 @@ public class Sell_Installment extends Invoice
         return installmentPrice;
     }
     
+    public Customer getCustomer(){
+        return this.customer;
+    }
+    
     public InvoiceStatus getInvoiceStatus(){
         return INVOICE_STATUS;
     }
@@ -51,7 +57,11 @@ public class Sell_Installment extends Invoice
     }
     
     public void setTotalPrice(int installmentPeriod){
-        this.totalPrice =  installmentPrice*installmentPeriod;
+        //this.totalPrice =  installmentPrice*installmentPeriod;
+    }
+    
+    public void setCustomer(Customer customer){
+        this.customer = customer;
     }
     
     public void printData(){
@@ -59,7 +69,7 @@ public class Sell_Installment extends Invoice
         System.out.println("ID: " + getId());
         System.out.println("Date: " + getDate());
         System.out.println("Total Item: " + getTotalItem());
-        System.out.println("Total Price: " + this.totalPrice);
+        //System.out.println("Total Price: " + this.totalPrice);
         System.out.println("Installment Price: " + getInstallmentPrice());
         System.out.println("Status: " + INVOICE_STATUS);
     }

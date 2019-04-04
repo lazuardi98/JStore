@@ -66,18 +66,21 @@ public class Transaction
     public static void sellItemPaid(Item item)
     {
         Invoice invoice = new Sell_Paid(1, item, date, 3, item.getPrice());
+        invoice.printData();
         item.printData();
     }
     
     public static void sellItemUnpaid(Item item)
     {
         Invoice invoice = new Sell_Unpaid(1, item, date, 3, item.getPrice(), "30-Mar-19");
+        invoice.printData();
         item.printData();
     }
     
     public static void sellItemInstallment(Item item)
     {
         Invoice invoice = new Sell_Installment(1, item, date, 3, item.getPrice(), 2);
+        invoice.printData();
         item.printData();
     }
 }

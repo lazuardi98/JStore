@@ -10,7 +10,7 @@
 public class DatabaseItem
 {
     // instance variables
-    private String[] listItem;
+    private Item[] listItem;
     public static Item itemDB;
 
     public static boolean addItem(Item item){
@@ -34,7 +34,7 @@ public class DatabaseItem
         return itemDB;
     }
     
-    public String[] getItemDatabase(){
+    public Item[] getItemDatabase(){
         return listItem;
     }
 }

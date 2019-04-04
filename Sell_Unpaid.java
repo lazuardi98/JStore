@@ -1,4 +1,5 @@
-
+import java.util.Date;
+import java.util.Calendar;
 /**
  * Write a description of class Sell_Unpaid here.
  *
@@ -10,16 +11,17 @@ public class Sell_Unpaid extends Invoice
     // instance variables - replace the example below with your own
     private static InvoiceType INVOICE_TYPE = InvoiceType.Sell;
     private static InvoiceStatus INVOICE_STATUS = InvoiceStatus.Unpaid;
-    private String dueDate;
+    private Calendar dueDate = Calendar.getInstance();
+    private Customer customer;
 
     /**
      * Constructor for objects of class Sell_Unpaid
      */
-    public Sell_Unpaid(int id, Item item, String date, int totalItem, int totalPrice, String dueDate)
+    public Sell_Unpaid(int id, Item item, int totalItem, Customer customer)
     {
         // initialise instance variables
-        super(id, item, date, totalItem, totalPrice);
-        dueDate = dueDate;
+        super(id, item, totalItem);
+        setCustomer(customer);
     }
 
     /**
@@ -36,8 +38,21 @@ public class Sell_Unpaid extends Invoice
         return INVOICE_TYPE;
     }
     
-    public String getDueDate(){
+    public Customer getCustomer(){
+        return this.customer;
+    }
+    
+    public Calendar getDueDate(){
+        dueDate.add(Calendar.DATE, 1);
         return dueDate;
+    }
+    
+    public void setCustomer(Customer customer){
+        this.customer = customer;
+    }
+    
+    public void setDueDate(Calendar dueDate){
+        dueDate = dueDate;
     }
     
     public void printData(){
