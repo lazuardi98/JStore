@@ -1,4 +1,5 @@
-
+import java.util.*;
+import java.text.*;
 /**
  * Write a description of class Sell_Installment here.
  *
@@ -13,16 +14,18 @@ public class Sell_Installment extends Invoice
     private int installmentPeriod;
     private int installmentPrice;
     private Customer customer;
+    private boolean isActive;
 
     /**
      * Constructor for objects of class Sell_Installment
      */
-    public Sell_Installment(int id, Item item, int totalItem, int installmentPeriod, Customer customer)
+    public Sell_Installment(ArrayList<Integer> item, int installmentPeriod, Customer customer)
     {
         // initialise instance variables
-        super(id, item, totalItem);
+        super(item);
         setCustomer(customer);
         this.installmentPeriod = installmentPeriod;
+        isActive = false;
     }
 
     /**
@@ -32,7 +35,7 @@ public class Sell_Installment extends Invoice
      * @return    the sum of x and y
      */
     public int getInstallmentPeriod(){
-        return installmentPeriod;
+        return this.installmentPeriod;
     }
     
     public int getInstallmentPrice(){
@@ -51,26 +54,32 @@ public class Sell_Installment extends Invoice
         return INVOICE_TYPE;
     }
     
-    public void setInstallmentPrice(int totalPrice){
-        double kali = 1.02;
-        installmentPrice = (int)(totalPrice/this.installmentPeriod*kali);
+    public void setInstallmentPrice(){
+        //double kali = 1.02;
+        installmentPrice = (int)((super.getTotalPrice()/this.installmentPeriod)*1.02);
     }
     
-    public void setTotalPrice(int installmentPeriod){
-        //this.totalPrice =  installmentPrice*installmentPeriod;
+    public void setTotalPrice(){
+        super.setTotalPrice(installmentPrice*this.installmentPeriod);
     }
     
     public void setCustomer(Customer customer){
         this.customer = customer;
     }
     
-    public void printData(){
+    public String toString(){
         System.out.println("########## INVOICE ##########");
-        System.out.println("ID: " + getId());
-        System.out.println("Date: " + getDate());
-        System.out.println("Total Item: " + getTotalItem());
-        //System.out.println("Total Price: " + this.totalPrice);
-        System.out.println("Installment Price: " + getInstallmentPrice());
-        System.out.println("Status: " + INVOICE_STATUS);
+        System.out.println("ID: " + Integer.toString(getId()));
+        System.out.println("Item: " + getItem().getName());
+        //System.out.println("Amount: " + Integer.toString(getTotalItem()));
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MMMM-yyyy");
+        System.out.println("Buy Date: " + sdf.format(getDate().getTime()).toString());
+        System.out.println("Price: " + Integer.toString(getItem().getPrice()));
+        System.out.println("Price Total: " + Integer.toString(getTotalPrice()));
+        System.out.println("Supplier ID: " + Integer.toString(getItem().getSupplier().getId()));
+        System.out.println("Supplier Name: " + getItem().getSupplier().getName());
+        System.out.println("Status: " + INVOICE_STATUS.toString());
+        System.out.println("Buy success");
+        return "";
     }
 }

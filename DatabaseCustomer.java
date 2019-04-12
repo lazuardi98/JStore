@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 /**
  * Write a description of class DatabaseCustomer here.
  *
@@ -8,8 +8,8 @@
 public class DatabaseCustomer
 {
     // instance variables - replace the example below with your own
-    private Customer[] listCustomer;
-    private Customer customer;
+    private static ArrayList<Customer> CUSTOMER_DATABASE = new ArrayList<Customer>();
+    private static int LAST_CUSTOMER_ID = 0;
 
     /**
      * An example of a method - replace this comment with your own
@@ -17,8 +17,16 @@ public class DatabaseCustomer
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
+    public static ArrayList<Customer> getCustomerDatabase(){
+        return CUSTOMER_DATABASE;
+    }
+    
     public boolean addCustomer(Customer customer){
         return true;
+    }
+    
+    public static int getLastCustomerID(){
+        return LAST_CUSTOMER_ID;
     }
     
     public boolean removeCustomer(Customer customer){
@@ -26,10 +34,10 @@ public class DatabaseCustomer
     }
     
     public Customer getCustomer(){
-        return customer;
+        return null;
     }
     
     public Customer[] getListCustomer(){
-        return listCustomer;
+        return null;
     }
 }

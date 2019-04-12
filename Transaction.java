@@ -1,3 +1,4 @@
+import java.util.*;
 import java.time.LocalDate;
 /**
  * Write a description of class Transaction here.
@@ -7,9 +8,8 @@ import java.time.LocalDate;
  */
 public class Transaction
 {
-    // instance variables - replace the example below with your own
-    private static LocalDate localdate = LocalDate.now();
-    private static String date = localdate.toString();
+    //private static LocalDate localdate = LocalDate.now();
+    //private static String date = localdate.toString();
 
     /**
      * Constructor for objects of class Transaction
@@ -26,61 +26,58 @@ public class Transaction
      */
     public static void orderNewItem(Item item)
     {
-        Invoice invoice = new Buy_Paid(1, item, date, 5, item.getPrice());
-        if(invoice instanceof Sell_Paid)
-        {
-            System.out.println("Benar Invoice Type adalah Sell_Paid");
-        }
-        else
-        {
-            System.out.println("Salah, Invoice Type bukan Sell_Paid");
-        }
+        Invoice invoice = new Buy_Paid(new ArrayList<Integer>(Arrays.asList(item.getId())));
+        DatabaseInvoice.addInvoice(invoice);
     }
     
     public static void orderSecondItem(Item item)
     {
-        Invoice invoice = new Buy_Paid(1, item, date, 5, item.getPrice());
-        if(invoice instanceof Sell_Paid)
-        {
-            System.out.println("Benar Invoice Type adalah Sell_Paid");
-        }
-        else
-        {
-            System.out.println("Salah, Invoice Type bukan Sell_Paid");
-        }
+        Invoice invoice = new Buy_Paid(new ArrayList<Integer>(Arrays.asList(item.getId())));
+        DatabaseInvoice.addInvoice(invoice);
     }
     
     public static void orderRefurbishedItem(Item item)
     {
-        Invoice invoice = new Buy_Paid(1, item, date, 5, item.getPrice());
-        if(invoice instanceof Sell_Paid)
+        Invoice invoice = new Buy_Paid(new ArrayList<Integer>(Arrays.asList(item.getId())));
+        DatabaseInvoice.addInvoice(invoice);
+    }
+    
+    public static void sellItemPaid(Item item, Customer customer)
+    {
+        Invoice invoice = new Buy_Paid(new ArrayList<Integer>(Arrays.asList(item.getId())));
+        DatabaseInvoice.addInvoice(invoice);
+    }
+    
+    public static void sellItemUnpaid(Item item, Customer customer)
+    {
+        Invoice invoice = new Buy_Paid(new ArrayList<Integer>(Arrays.asList(item.getId())));
+        DatabaseInvoice.addInvoice(invoice);
+    }
+    
+    public static void sellItemInstallment(Item item, Customer customer, int installmentPeriod)
+    {
+        Invoice invoice = new Buy_Paid(new ArrayList<Integer>(Arrays.asList(item.getId())));
+        DatabaseInvoice.addInvoice(invoice);
+    }
+    
+    public static boolean finishTransaction(Invoice invoice){
+        invoice = DatabaseInvoice.getInvoice(invoice.getId());
+        if(invoice == null)
         {
-            System.out.println("Benar Invoice Type adalah Sell_Paid");
+            return false;
         }
-        else
+        invoice.setIsActive(false);
+        System.out.println("isActive : " + invoice.getIsActive());
+        return true;
+    }
+    
+    public static boolean cancelTransaction(Invoice invoice){
+        invoice = DatabaseInvoice.getInvoice(invoice.getId());
+        if(invoice == null)
         {
-            System.out.println("Salah, Invoice Type bukan Sell_Paid");
+            return false;
         }
-    }
-    
-    public static void sellItemPaid(Item item)
-    {
-        Invoice invoice = new Sell_Paid(1, item, date, 3, item.getPrice());
-        invoice.printData();
-        item.printData();
-    }
-    
-    public static void sellItemUnpaid(Item item)
-    {
-        Invoice invoice = new Sell_Unpaid(1, item, date, 3, item.getPrice(), "30-Mar-19");
-        invoice.printData();
-        item.printData();
-    }
-    
-    public static void sellItemInstallment(Item item)
-    {
-        Invoice invoice = new Sell_Installment(1, item, date, 3, item.getPrice(), 2);
-        invoice.printData();
-        item.printData();
+        DatabaseInvoice.removeInvoice(invoice.getId());
+        return true;
     }
 }

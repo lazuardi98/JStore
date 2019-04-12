@@ -1,5 +1,5 @@
-import java.util.Date;
-import java.util.Calendar;
+import java.util.*;
+import java.text.*;
 /**
  * Write a description of class Sell_Unpaid here.
  *
@@ -13,15 +13,17 @@ public class Sell_Unpaid extends Invoice
     private static InvoiceStatus INVOICE_STATUS = InvoiceStatus.Unpaid;
     private Calendar dueDate = Calendar.getInstance();
     private Customer customer;
+    private boolean isActive;
 
     /**
      * Constructor for objects of class Sell_Unpaid
      */
-    public Sell_Unpaid(int id, Item item, int totalItem, Customer customer)
+    public Sell_Unpaid(ArrayList<Integer> item, Customer customer)
     {
         // initialise instance variables
-        super(id, item, totalItem);
+        super(item);
         setCustomer(customer);
+        isActive = false;
     }
 
     /**
@@ -55,13 +57,19 @@ public class Sell_Unpaid extends Invoice
         dueDate = dueDate;
     }
     
-    public void printData(){
+    public String toString(){
         System.out.println("########## INVOICE ##########");
-        System.out.println("ID: " + getId());
-        System.out.println("Date: " + getDate());
-        System.out.println("Due Date: " + getDueDate());
-        System.out.println("Total Item: " + getTotalItem());
-        System.out.println("Total Price: " + getTotalPrice());
-        System.out.println("Status: " + INVOICE_STATUS);
+        System.out.println("ID: " + Integer.toString(getId()));
+        System.out.println("Item: " + getItem().getName());
+        //System.out.println("Amount: " + Integer.toString(getTotalItem()));
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MMMM-yyyy");
+        System.out.println("Buy Date: " + sdf.format(getDate().getTime()).toString());
+        System.out.println("Price: " + Integer.toString(getItem().getPrice()));
+        System.out.println("Price Total: " + Integer.toString(getTotalPrice()));
+        System.out.println("Supplier ID: " + Integer.toString(getItem().getSupplier().getId()));
+        System.out.println("Supplier Name: " + getItem().getSupplier().getName());
+        System.out.println("Status: " + INVOICE_STATUS.toString());
+        System.out.println("Buy success");
+        return "";
     }
 }

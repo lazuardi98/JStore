@@ -22,10 +22,9 @@ public class Item
     /**
      * Constructor for objects of class Item
      */
-    public Item(int id, String name, int stock, ItemStatus status, int price, Supplier supplier, ItemCategory category)
+    public Item(String name, int stock, ItemStatus status, int price, Supplier supplier, ItemCategory category)
     {
-        // initialise instance variables
-       this.id = id;
+       this.id = DatabaseItem.getLastItemID()+1;
        this.name = name;
        this.stock = stock;
        this.price = price;
@@ -35,31 +34,31 @@ public class Item
     }
 
     public int getId(){
-        return id;
+        return this.id;
     }
 
     public String getName(){
-        return name;
+        return this.name;
     }
     
     public int getStock(){
-        return stock;
+        return this.stock;
     }
     
     public int getPrice(){
-        return price;
+        return this.price;
     }
     
     public ItemCategory getCategory(){
-        return category;
+        return this.category;
     }
     
     public ItemStatus getStatus(){
-        return status;
+        return this.status;
     }
     
     public Supplier getSupplier(){
-        return supplier;
+        return this.supplier;
     }
     
     public void setId(int id){

@@ -1,13 +1,15 @@
 #BlueJ class context
 comment0.target=DatabaseSupplier
 comment0.text=\r\n\ The\ DatabaseSupplier\ program\ implements\ an\ application\r\n\ that\ configure\ the\ database\ for\ supplier.\r\n\ \r\n\ @author\ Lazuardi\ Naufal\ /\ 1606880573\r\n\ @version\ 2.0\r\n\ @since\ 28-02-2019\r\n
-comment1.params=supplier
-comment1.target=boolean\ addSupplier(Supplier)
+comment1.params=
+comment1.target=java.util.ArrayList\ getSupplierDatabase()
 comment1.text=\r\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\r\n\r\n\ @param\ \ y\ \ a\ sample\ parameter\ for\ a\ method\r\n\ @return\ \ \ \ the\ sum\ of\ x\ and\ y\r\n
-comment2.params=supplier
-comment2.target=boolean\ removeSupplier(Supplier)
-comment3.params=
-comment3.target=Supplier\ getSupplier()
-comment4.params=
-comment4.target=Supplier[]\ getListSupplier()
-numComments=5
+comment2.params=
+comment2.target=int\ getLastSupplierID()
+comment3.params=supplier
+comment3.target=boolean\ addSupplier(Supplier)
+comment4.params=id
+comment4.target=Supplier\ getSupplier(int)
+comment5.params=id
+comment5.target=boolean\ removeSupplier(int)
+numComments=6

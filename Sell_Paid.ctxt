@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=Sell_Paid
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Sell_Paid\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=id\ item\ date\ totalItem\ totalPrice
-comment1.target=Sell_Paid(int,\ Item,\ java.lang.String,\ int,\ int)
+comment1.params=item\ customer
+comment1.target=Sell_Paid(java.util.ArrayList,\ Customer)
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Sell_Paid\r\n
 comment2.params=
 comment2.target=InvoiceStatus\ getInvoiceStatus()
@@ -10,5 +10,9 @@ comment2.text=\r\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\
 comment3.params=
 comment3.target=InvoiceType\ getInvoiceType()
 comment4.params=
-comment4.target=void\ printData()
-numComments=5
+comment4.target=Customer\ getCustomer()
+comment5.params=customer
+comment5.target=void\ setCustomer(Customer)
+comment6.params=
+comment6.target=java.lang.String\ toString()
+numComments=7

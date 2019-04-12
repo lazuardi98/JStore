@@ -16,14 +16,13 @@ public class Supplier
     private String email;
     private String phoneNumber;
     private Location location;
-    public String city;
     
     /**
      * Constructor for objects of class Supplier
      */
     public Supplier(int id, String name, String email, String phoneNumber, Location location)
     {
-        this.id = id;
+        this.id = DatabaseSupplier.getLastSupplierID()+1;
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
@@ -31,29 +30,25 @@ public class Supplier
     }
 
     public int getId(){
-        return id;
+        return this.id;
     }
     
     public String getName(){
-        return name;
+        return this.name;
     }
     
     public String getEmail(){
-        return email;
+        return this.email;
     }
     
     public String getPhoneNumber(){
-        return phoneNumber;
+        return this.phoneNumber;
     }
     
     public Location getLocation(){
-        return location;
+        return this.location;
     }
     
-    public String getCity(){
-        return city;
-    }
-
     public void setId(int id){
         this.id = id;
     }
@@ -72,10 +67,6 @@ public class Supplier
     
     public void setLocation(Location location){
         this.location = location;
-    }
-
-    public void setCity(String city){
-        this.city = city;
     }
     
     public void printData(){

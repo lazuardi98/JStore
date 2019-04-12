@@ -1,8 +1,10 @@
-//import java.util.Date;
+import java.util.Date;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.*;
+import java.text.*;
 /**
  * Write a description of class Customer here.
  *
@@ -24,11 +26,11 @@ public class Customer
      */
     public Customer(String name, String email, String username, String password, int id, Calendar birthDate)
     {
+       this.id = DatabaseCustomer.getLastCustomerID()+1;
        this.name = name;
        this.email = email;
        this.username = username;
        this.password = password;
-       this.id = id;
        this.birthDate = birthDate;
     }
     
@@ -64,9 +66,8 @@ public class Customer
     }
     
     public Calendar getBirthDate(){
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MMMMM-yyyy");
-        String bdate = ("Birth date: " + date.format(this.birthDate));
-        System.out.print(bdate);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MMMM-yyyy");
+        System.out.println("Birth date: " + sdf.format(this.birthDate.getTime()));
         return this.birthDate;
     }
     
@@ -75,7 +76,17 @@ public class Customer
     }
     
     public void setEmail(String email){
-        this.email = email;
+        String regex = "^[a-zA-Z0-9_!#$%&’'*+/=?`{(|)}~^-]+(?:\\." +
+                       "[a-zA-Z0-9_!#$%&’'*+/=?`{(|)}~^-]+)*@" +
+                       "[a-zA-Z0-9]([a-zA-Z0-9-]+)(\\.[a-zA-Z0-9-]+)*(\\.[a-zA-Z]{2,})$";
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(email);
+        if (m.matches()){
+            this.email = email;
+        }
+        else {
+            this.email = null;
+        }
     }
     
     public void setUsername(String username){
@@ -83,7 +94,15 @@ public class Customer
     }
     
     public void setPassword(String password){
-        this.password = password;
+        String regex = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{6,}$";
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(password);
+        if (m.matches()){
+            this.password = password;
+        }
+        else {
+            this.password = null;
+        }
     }
     
     public void setId(int id){

@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 /**
  * The DatabaseSupplier program implements an application
  * that configure the database for supplier.
@@ -10,8 +10,8 @@
 public class DatabaseSupplier
 {
     // instance variables
-    private Supplier[] listSupplier;
-    private Supplier supplier;
+    private static ArrayList<Supplier> SUPPLIER_DATABASE = new ArrayList<Supplier>();
+    private static int LAST_SUPPLIER_ID = 0;
 
     /**
      * An example of a method - replace this comment with your own
@@ -19,19 +19,44 @@ public class DatabaseSupplier
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public boolean addSupplier(Supplier supplier){
+    public static ArrayList<Supplier> getSupplierDatabase(){
+        return SUPPLIER_DATABASE;
+    }
+    
+    public static int getLastSupplierID(){
+        return LAST_SUPPLIER_ID;
+    }
+    
+    public static boolean addSupplier(Supplier supplier){
+        for (int i = 0; i < SUPPLIER_DATABASE.size(); i++){
+            if (SUPPLIER_DATABASE.get(i).getName().equals(supplier.getName()) ||
+                SUPPLIER_DATABASE.get(i).getEmail().equals(supplier.getEmail()) ||
+                SUPPLIER_DATABASE.get(i).getPhoneNumber().equals(supplier.getPhoneNumber())){
+                    return false;
+            }
+        }
+        SUPPLIER_DATABASE.add(supplier);
+        LAST_SUPPLIER_ID++;
         return true;
     }
     
-    public boolean removeSupplier(Supplier supplier){
+    public static Supplier getSupplier(int id){
+        for (int i = 0; i < SUPPLIER_DATABASE.size(); i++){
+            if (SUPPLIER_DATABASE.get(i).getId() == id){
+                return SUPPLIER_DATABASE.get(i);
+            }
+        }
+        return null;
+    }
+    
+    public static boolean removeSupplier(int id){
+        for (int i = 0; i < SUPPLIER_DATABASE.size(); i++){
+            if (SUPPLIER_DATABASE.get(i).getId() == id){
+                SUPPLIER_DATABASE.remove(i);
+                DatabaseItem.removeItem(id);
+                return true;
+            }
+        }
         return false;
-    }
-    
-    public Supplier getSupplier(){
-        return supplier;
-    }
-    
-    public Supplier[] getListSupplier(){
-        return listSupplier;
     }
 }

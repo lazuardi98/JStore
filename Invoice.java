@@ -1,5 +1,5 @@
-import java.util.Date;
-import java.util.Calendar;
+import java.util.*;
+import java.text.*;
 /**
  * The Invoice program implements
  * state, behavior, and identity
@@ -13,21 +13,26 @@ public abstract class Invoice
 {
     // instance variables
     private int id;
-    private Item item;
-    private Calendar date = Calendar.getInstance();
+    private ArrayList<Integer> item; // new ArrayList<Integer>();
+    private Calendar date;
     private int totalPrice;
-    private int totalItem;
+    private boolean isActive;
+    private Customer customer;
+    //private Item item;
+    //private int totalItem;
     //private InvoiceStatus status;
     //private InvoiceType type;
     /**
      * Constructor for objects of class Invoice
      */
-    public Invoice(int id, Item item, int totalItem)
+    public Invoice(ArrayList<Integer> item)
     {
-        this.id = id;
+        //this.id = id;
         this.item = item;
-        this.totalItem = totalItem;
-        this.totalPrice = item.getPrice()*this.totalItem;
+        this.id = DatabaseInvoice.getLastInvoiceID()+1;
+        //this.totalItem = totalItem;
+        //this.totalPrice = item.getPrice()*this.totalItem;
+        this.date = Calendar.getInstance();
     }
 
     public int getId(){
@@ -35,7 +40,7 @@ public abstract class Invoice
     }
     
     public Item getItem(){
-        return this.item;
+        return null;
     }
     
     public Calendar getDate(){
@@ -46,19 +51,23 @@ public abstract class Invoice
         return this.totalPrice;
     }
     
-    public int getTotalItem(){
-        return this.totalItem;
-    }
-    
     public abstract InvoiceStatus getInvoiceStatus();
     
     public abstract InvoiceType getInvoiceType();
-
+    
+    public boolean getIsActive(){
+        return this.isActive;
+    }
+    
+    public Customer getCustomer(){
+        return this.customer;
+    }
+    
     public void setId(int id){
         this.id = id;
     }
     
-    public void setItem(Item item){
+    public void setItem(ArrayList<Integer> item){
         this.item = item;
     }
 
@@ -70,17 +79,13 @@ public abstract class Invoice
         this.totalPrice = totalPrice;
     }
     
-    public void setTotalItean(int totalItem){
-        this.totalItem = totalItem;
+    public void setInvoiceStatus(InvoiceStatus status){
+        //this.status = status;
     }
     
-    /*public void setInvoiceStatus(InvoiceStatus status){
-        this.status = status;
-    }*/
+    public void setIsActive(boolean isActive){
+        this.isActive = isActive;
+    }
     
-    public abstract void printData();
-    
-    public String toString(){
-        return item.toString();
-    } 
+    public abstract String toString();
 }
