@@ -11,7 +11,7 @@ public class Sell_Unpaid extends Invoice
     // instance variables - replace the example below with your own
     private static InvoiceType INVOICE_TYPE = InvoiceType.Sell;
     private static InvoiceStatus INVOICE_STATUS = InvoiceStatus.Unpaid;
-    private Calendar dueDate = Calendar.getInstance();
+    private Calendar dueDate;
     private Customer customer;
     private boolean isActive;
 
@@ -23,7 +23,9 @@ public class Sell_Unpaid extends Invoice
         // initialise instance variables
         super(item);
         setCustomer(customer);
-        isActive = false;
+        dueDate = Calendar.getInstance();
+        dueDate.add(Calendar.DAY_OF_MONTH, 1);
+        super.setIsActive(true);
     }
 
     /**
@@ -45,7 +47,6 @@ public class Sell_Unpaid extends Invoice
     }
     
     public Calendar getDueDate(){
-        dueDate.add(Calendar.DATE, 1);
         return dueDate;
     }
     
@@ -58,19 +59,35 @@ public class Sell_Unpaid extends Invoice
     }
     
     public String toString(){
+        String text;
+        String item = "";
+        String supplier_id = "";
+        String supplier_name = "";
         for (int i = 0; i < getItem().size(); i++){
-            System.out.println("########## INVOICE ##########");
-            System.out.println("ID: " + Integer.toString(getId()));
-            //System.out.println("Item: " + getItem(i).getName());
-            //System.out.println("Amount: " + Integer.toString(getTotalItem()));
-            SimpleDateFormat sdf = new SimpleDateFormat("dd-MMMM-yyyy");
-            //System.out.println("Price: " + Integer.toString(getItem().getPrice()));
-            System.out.println("Price Total: " + Integer.toString(getTotalPrice()));
-            //System.out.println("Supplier ID: " + Integer.toString(getItem().getSupplier().getId()));
-            //System.out.println("Supplier Name: " + getItem().getSupplier().getName());
-            System.out.println("Status: " + INVOICE_STATUS.toString());
-            System.out.println("Buy success");
+            item += DatabaseItem.getItemFromID(getItem().get(i)).getName() + ", ";
         }
-        return "";
+        for (int i = 0; i < getItem().size(); i++){
+            supplier_id += Integer.toString(DatabaseItem.getItemFromID(getItem().get(i)).getSupplier().getId()) + ", ";
+        }
+        for (int i = 0; i < getItem().size(); i++){
+            supplier_name += DatabaseItem.getItemFromID(getItem().get(i)).getSupplier().getName() + ", ";
+        }
+        item = item.substring(0, item.length() - 2);
+        supplier_id = supplier_id.substring(0, supplier_id.length() - 2);
+        supplier_name = supplier_name.substring(0, supplier_name.length() - 2);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MMMM-yyyy");
+        text = "########## INVOICE ##########" + "\n" +
+                "ID: " + Integer.toString(getId()) + "\n" +
+                "Item: " + item + "\n" +
+                "Buy Date: " + sdf.format(getDate().getTime()) + "\n" +
+                "Price Total: " + Integer.toString(getTotalPrice()) + "\n" +
+                "Supplier ID: " + supplier_id + "\n" +
+                "Supplier Name: " + supplier_name + "\n" +
+                "Customer ID: " + Integer.toString(getCustomer().getId()) + "\n" +
+                "Customer Name: " + getCustomer().getName() + "\n" +
+                "Status: " + INVOICE_STATUS.toString() + "\n" +
+                "Due Date: " + sdf.format(getDueDate().getTime()) + "\n" +
+                "If payment is not received by dueDate, transaction will be cancelled." + "\n";
+        return text;
     }
 }

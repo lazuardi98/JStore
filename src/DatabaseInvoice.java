@@ -60,10 +60,12 @@ public class DatabaseInvoice
     
     public static boolean removeInvoice(int id){
         for (int i = 0; i < INVOICE_DATABASE.size(); i++){
-            if (INVOICE_DATABASE.get(i).getId() == id
-                && INVOICE_DATABASE.get(i).getIsActive() == true){
-                    INVOICE_DATABASE.remove(i);
-                    return true;
+            if (INVOICE_DATABASE.get(i).getId() == id){
+                if (INVOICE_DATABASE.get(i).getIsActive() == true){
+                    INVOICE_DATABASE.get(i).setIsActive(false);
+                }
+                INVOICE_DATABASE.remove(i);
+                return true;
             }
         }
         return false;

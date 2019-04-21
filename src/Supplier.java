@@ -70,13 +70,11 @@ public class Supplier
     }
     
     public String toString(){
-        System.out.println("########## SUPPLIER ##########");
-        System.out.println("ID: " + this.id);
-        System.out.println("Name: " + this.name);
-        System.out.println("Email: " + this.email);
-        System.out.println("Phone Number: " + this.phoneNumber);
-        System.out.println("Location: " + this.location.getCity());
-        System.out.println();
-        return "";
+        return "########## SUPPLIER ##########" + "\n" +
+                "ID: " + this.id + "\n" +
+                "Name: " + this.name + "\n" +
+                "Email: " + this.email + "\n" +
+                "Phone Number: " + this.phoneNumber + "\n" +
+                "Location: " + this.location.getCity() + "\n";
     }
 }

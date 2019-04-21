@@ -32,15 +32,15 @@ public class Location
      * @return    the sum of x and y
      */
     public String getProvince(){
-        return province;
+        return this.province;
     }
     
     public String getCity(){
-        return city;
+        return this.city;
     }
     
     public String getDescription(){
-        return description;
+        return this.description;
     }
 
     public void setProvince(String province){
@@ -56,11 +56,9 @@ public class Location
     }
     
     public String toString(){
-        System.out.println("########## LOCATION ##########");
-        System.out.println("Province: " + this.province);
-        System.out.println("City: " + this.city);
-        System.out.println("Description: " + this.description);
-        System.out.println();
-        return "";
+        return "########## LOCATION ##########" + "\n" +
+                "City: " + this.city + "\n" +
+                "Province: " + this.province + "\n" +
+                "Description: " + this.description + "\n";
     }
 }

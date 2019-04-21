@@ -44,6 +44,8 @@ public abstract class Invoice
     }
     
     public Calendar getDate(){
+        //SimpleDateFormat sdf = new SimpleDateFormat("dd-MMMM-yyyy");
+        //System.out.println("Birth date: " + sdf.format(this.birthDate.getTime()));
         return this.date;
     }
     

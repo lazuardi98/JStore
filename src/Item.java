@@ -63,6 +63,10 @@ public class Item
         this.name = name;
     }
 
+    public void setPrice(int price){
+        this.price = price;
+    }
+
     public void setCategory(ItemCategory category){
         this.category = category;
     }
@@ -71,24 +75,17 @@ public class Item
         this.status = status;
     }
     
-    public void setPrice(int price){
-        this.price = price;
-    }
-    
     public void setSupplier(Supplier supplier){
         this.supplier = supplier;
     }
     
     public String toString(){
-        return name;
-    }
-    
-    public void printData(){
-        System.out.println("########## ITEM ##########");
-        System.out.println("ID: " + this.id);
-        System.out.println("Name: " + this.name);
-        System.out.println("Category: " + this.category );
-        System.out.println("Status: " + this.status);
-        System.out.println("Supplier: " + this.supplier.getName());
+        return "########## ITEM ##########" + "\n" +
+                "ID: " + this.id + "\n" +
+                "Name: " + this.name + "\n" +
+                "Price: " + this.price + "\n" +
+                "Category: " + this.category + "\n" +
+                "Status: " + this.status + "\n" +
+                "Supplier: " + this.supplier.getName() + "\n";
     }
 }

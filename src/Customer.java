@@ -67,8 +67,8 @@ public class Customer
     }
     
     public Calendar getBirthDate(){
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MMMM-yyyy");
-        System.out.println("Birth date: " + sdf.format(this.birthDate.getTime()));
+        //SimpleDateFormat sdf = new SimpleDateFormat("dd-MMMM-yyyy");
+        //System.out.println("Birth date: " + sdf.format(this.birthDate.getTime()));
         return this.birthDate;
     }
     
@@ -121,13 +121,12 @@ public class Customer
     }
     
     public String toString(){
-        System.out.println("########## CUSTOMER ##########");
-        System.out.println("Id: " + this.id);
-        System.out.println("Name: " + this.name);
-        System.out.println("Username: " + this.username);
-        System.out.println("Email: " + this.email);
-        getBirthDate();
-        System.out.println();
-        return "";
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MMMM-yyyy");
+        return "########## CUSTOMER ##########" + "\n" +
+                "Id: " + Integer.toString(getId()) + "\n" +
+                "Name: " + this.name + "\n" +
+                "Username: " + this.username + "\n" +
+                "Email: " + this.email + "\n" +
+                "Birthdate: " + sdf.format(this.birthDate.getTime()) + "\n";
     }
 }

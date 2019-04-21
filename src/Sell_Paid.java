@@ -22,7 +22,7 @@ public class Sell_Paid extends Invoice
         // initialise instance variables
         super(item);
         setCustomer(customer);
-        isActive = true;
+        super.setIsActive(false);
     }
 
     /**
@@ -48,20 +48,34 @@ public class Sell_Paid extends Invoice
     }
     
     public String toString(){
-        for (int i = 0; i < 1; i++){
-            System.out.println("########## INVOICE ##########");
-            System.out.println("ID: " + Integer.toString(getId()));
-            System.out.println("Item: " + DatabaseItem.getItemFromID(getItem().get(i)).getName());
-            //System.out.println("Amount: " + Integer.toString(getTotalItem()));
-            SimpleDateFormat sdf = new SimpleDateFormat("dd-MMMM-yyyy");
-            System.out.println("Buy date: " + sdf.format(getDate().getTime()));
-            //System.out.println("Price: " + Integer.toString(getItem().getPrice()));
-            System.out.println("Price Total: " + Integer.toString(getTotalPrice()));
-            System.out.println("Supplier ID: " + Integer.toString(DatabaseItem.getItemFromID(getItem().get(i)).getSupplier().getId()));
-            System.out.println("Supplier Name: " + DatabaseItem.getItemFromID(getItem().get(i)).getSupplier().getName());
-            System.out.println("Status: " + INVOICE_STATUS.toString());
-            System.out.println("Buy success");
+        String text;
+        String item = "";
+        String supplier_id = "";
+        String supplier_name = "";
+        for (int i = 0; i < getItem().size(); i++){
+            item += DatabaseItem.getItemFromID(getItem().get(i)).getName() + ", ";
         }
-        return "";
+        for (int i = 0; i < getItem().size(); i++){
+            supplier_id += Integer.toString(DatabaseItem.getItemFromID(getItem().get(i)).getSupplier().getId()) + ", ";
+        }
+        for (int i = 0; i < getItem().size(); i++){
+            supplier_name += DatabaseItem.getItemFromID(getItem().get(i)).getSupplier().getName() + ", ";
+        }
+        item = item.substring(0, item.length() - 2);
+        supplier_id = supplier_id.substring(0, supplier_id.length() - 2);
+        supplier_name = supplier_name.substring(0, supplier_name.length() - 2);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MMMM-yyyy");
+        text = "########## INVOICE ##########" + "\n" +
+                "ID: " + Integer.toString(getId()) + "\n" +
+                "Item: " + item + "\n" +
+                "Buy Date: " + sdf.format(getDate().getTime()) + "\n" +
+                "Price Total: " + Integer.toString(getTotalPrice()) + "\n" +
+                "Supplier ID: " + supplier_id + "\n" +
+                "Supplier Name: " + supplier_name + "\n" +
+                "Customer ID: " + Integer.toString(getCustomer().getId()) + "\n" +
+                "Customer Name: " + getCustomer().getName() + "\n" +
+                "Status: " + INVOICE_STATUS.toString() + "\n" +
+                "Sell success." + "\n";
+        return text;
     }
 }
