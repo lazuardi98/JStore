@@ -29,7 +29,7 @@ public class DatabaseCustomer
     public static boolean addCustomer(Customer customer){
         for (int i = 0; i < CUSTOMER_DATABASE.size(); i++){
             if (CUSTOMER_DATABASE.get(i).getUsername().equals(customer.getUsername()) ||
-                CUSTOMER_DATABASE.get(i).getEmail().equals(customer.getEmail())){
+                    CUSTOMER_DATABASE.get(i).getEmail().equals(customer.getEmail())){
                 try {
                     throw new CustomerAlreadyExistsException(customer);
                 } catch (CustomerAlreadyExistsException e){
@@ -46,6 +46,16 @@ public class DatabaseCustomer
     public static Customer getCustomer(int id){
         for (int i = 0; i < CUSTOMER_DATABASE.size(); i++){
             if (CUSTOMER_DATABASE.get(i).getId() == id){
+                return CUSTOMER_DATABASE.get(i);
+            }
+        }
+        return null;
+    }
+
+    public static Customer getCustomerLogin(String email, String password){
+        for (int i = 0; i < CUSTOMER_DATABASE.size(); i++){
+            if (CUSTOMER_DATABASE.get(i).getEmail().equals(email) &&
+                    CUSTOMER_DATABASE.get(i).getPassword().equals(password)){
                 return CUSTOMER_DATABASE.get(i);
             }
         }

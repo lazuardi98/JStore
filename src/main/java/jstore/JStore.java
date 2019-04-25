@@ -22,7 +22,7 @@ public class JStore
     public static void main(String[] args)
     {
         SpringApplication.run(JStore.class, args);
-        /* Location location1 = new Location("Depok", "West Java", "Student place");
+        Location location1 = new Location("Depok", "West Java", "Student place");
         
         Supplier supplier1 = new Supplier("ASUS", "asus@asus.com", "1-888-678-3688", location1);
         DatabaseSupplier.addSupplier(supplier1);
@@ -30,8 +30,8 @@ public class JStore
         DatabaseSupplier.addSupplier(supplier2);
         Supplier supplier3 = new Supplier("Sony", "sony@sony.com", "1-978-543-6666", location1);
         DatabaseSupplier.addSupplier(supplier3);
-        Supplier supplier4 = new Supplier("Sony", "sony@sony.com", "1-978-543-6666", location1);
-        DatabaseSupplier.addSupplier(supplier4);
+        //Supplier supplier4 = new Supplier("Sony", "sony@sony.com", "1-978-543-6666", location1);
+        //DatabaseSupplier.addSupplier(supplier4);
         
         Item item1 = new Item("ASUS RoG", ItemStatus.New, 20000000, supplier1, ItemCategory.Electronics);
         DatabaseItem.addItem(item1);
@@ -39,10 +39,10 @@ public class JStore
         DatabaseItem.addItem(item2);
         Item item3 = new Item("Sony Xperia", ItemStatus.Refurbished, 5000000, supplier3, ItemCategory.Electronics);
         DatabaseItem.addItem(item3);
-        Item item4 = new Item("Sony Xperia", ItemStatus.Refurbished, 5000000, supplier3, ItemCategory.Electronics);
+        Item item4 = new Item("Apple Iphone", ItemStatus.Second, 8000000, supplier2, ItemCategory.Electronics);
         DatabaseItem.addItem(item4);
         
-        Customer customer1 = new Customer("Ardi", "ardi98@yahoo.com", "ardi98", "Xabcdef1", 1998, 1, 23);
+        /* Customer customer1 = new Customer("Ardi", "ardi98@yahoo.com", "ardi98", "Xabcdef1", 1998, 1, 23);
         DatabaseCustomer.addCustomer(customer1);
         Customer customer2 = new Customer("Lara", "lara@google.com", "lara01", "Yabcdef2", 2001, 3, 3);
         DatabaseCustomer.addCustomer(customer2);
@@ -85,7 +85,7 @@ public class JStore
 
         System.out.println("isActive: " + DatabaseInvoice.getInvoice(2).getIsActive());
         Transaction.finishTransaction(DatabaseInvoice.getInvoice(2));
-        //Transaction.cancelTransaction(DatabaseInvoice.getInvoice(1));
+        //Transaction.cancelTransaction(DatabaseInvoice.getInvoice(1)); */
 
         /* System.out.println(location1.toString());
         System.out.println(supplier1.toString());
