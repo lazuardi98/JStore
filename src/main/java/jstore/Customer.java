@@ -38,7 +38,7 @@ public class Customer
        this.username = username;
        setEmail(email);
        setPassword(password);
-       birthDate = new GregorianCalendar(year, month, dayOfMonth);
+       birthDate = new GregorianCalendar(year, month-1, dayOfMonth);
     }
 
     /**
@@ -117,7 +117,7 @@ public class Customer
     
     public void setBirthDate(int year, int month, int dayOfMonth){
         birthDate.set(Calendar.YEAR, year);
-        birthDate.set(Calendar.MONTH, month);
+        birthDate.set(Calendar.MONTH, month-1);
         birthDate.set(Calendar.DAY_OF_MONTH, dayOfMonth);
     }
     

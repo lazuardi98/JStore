@@ -6,7 +6,7 @@ public class CustomerDoesntHaveActiveException extends Exception
 
     public CustomerDoesntHaveActiveException(Customer customer_input)
     {
-        super("dddddd");
+        super("");
         customer_error = customer_input;
     }
 

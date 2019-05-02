@@ -57,7 +57,7 @@ public class Transaction
             invoice.setIsActive(false);
             System.out.println("#### Finish Transaction ####");
             System.out.println("Invoice ID: " + invoice.getId());
-            System.out.println("isActive: " + invoice.getIsActive());
+            System.out.println("isActive: " + invoice.getIsActive() + "\n");
             return true;
         }
         return false;
@@ -68,6 +68,9 @@ public class Transaction
         if (DatabaseInvoice.getInvoice(invoice.getId()).equals(invoice) &&
                 (invoice.getInvoiceStatus().equals(InvoiceStatus.Unpaid) ||
                         invoice.getInvoiceStatus().equals(InvoiceStatus.Installment))){
+            System.out.println("#### Cancel Transaction ####");
+            System.out.println("Invoice ID: " + invoice.getId());
+            System.out.println("Removed from database." + "\n");
             DatabaseInvoice.removeInvoice(invoice.getId());
             return true;
         }

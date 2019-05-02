@@ -25,11 +25,10 @@ public class CustomerController
         Customer customer = new Customer(name, email, username, password, year, month, dayOfMonth);
         try {
             DatabaseCustomer.addCustomer(customer);
-        } catch(Exception ex) {
+        } catch (Exception ex){
             ex.getMessage();
             return null;
-        };
-
+        }
         return customer;
     }
 
@@ -42,8 +41,7 @@ public class CustomerController
 
     @RequestMapping("/getcustomer/{id}")
     public Customer getCust(@PathVariable int id){
-        Customer customer = DatabaseCustomer.getCustomer(id);
-        return customer;
+        return DatabaseCustomer.getCustomer(id);
     }
 
 }

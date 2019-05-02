@@ -48,7 +48,7 @@ public class InvoiceController
     @RequestMapping(value = "/createinvoiceinstallment", method = RequestMethod.POST)
     public Invoice createInvoiceInstallment(@RequestParam ArrayList<Integer> listItem,
                                             @RequestParam(value="id_customer") int id_customer,
-                                            @RequestParam(value="installment") int installment_period)
+                                            @RequestParam(value="installment_period") int installment_period)
     {
         Invoice invoice = new Sell_Installment(listItem, DatabaseCustomer.getCustomer(id_customer), installment_period);
         DatabaseInvoice.addInvoice(invoice);

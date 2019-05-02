@@ -49,11 +49,12 @@ public class DatabaseInvoice
     public static ArrayList<Invoice> getActiveOrder(Customer customer){
         ArrayList<Invoice> listActiveOrder = new ArrayList<Invoice>();
         for (int i = 0; i < INVOICE_DATABASE.size(); i++){
-            if (INVOICE_DATABASE.get(i).getCustomer().equals(customer) &&
-                    (INVOICE_DATABASE.get(i).getInvoiceStatus().equals(InvoiceStatus.Unpaid) ||
-                            INVOICE_DATABASE.get(i).getInvoiceStatus().equals(InvoiceStatus.Installment)) &&
-                    INVOICE_DATABASE.get(i).getIsActive() == true){
-                listActiveOrder.add(INVOICE_DATABASE.get(i));
+            if (INVOICE_DATABASE.get(i).getInvoiceStatus().equals(InvoiceStatus.Unpaid) ||
+                    INVOICE_DATABASE.get(i).getInvoiceStatus().equals(InvoiceStatus.Installment)){
+                if (INVOICE_DATABASE.get(i).getCustomer().equals(customer) &&
+                        INVOICE_DATABASE.get(i).getIsActive() == true){
+                    listActiveOrder.add(INVOICE_DATABASE.get(i));
+                }
             }
         }
         if (listActiveOrder.isEmpty()){
