@@ -13,7 +13,7 @@ public class Location
     // instance variables
     private String province;
     private String description;
-    private String city
+    private String city;
     /**
      * Constructor for objects of class Location
      */

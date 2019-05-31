@@ -46,7 +46,10 @@ public class JStore
         //DatabaseItem.addItem(item4);
         //Item item5 = new Item("Sony Xperia", ItemStatus.Refurbished, 5000000, supplier3, ItemCategory.Electronics);
         //DatabaseItem.addItem(item5);
-        
+
+        Customer customer1 = new Customer("Ardi", "ardi98@yahoo.com", "ardi98", "Xabcdef1", 1998, 2, 23);
+        DatabaseCustomer.addCustomer(customer1);
+
         /* Customer customer1 = new Customer("Ardi", "ardi98@yahoo.com", "ardi98", "Xabcdef1", 1998, 2, 23);
         DatabaseCustomer.addCustomer(customer1);
         Customer customer2 = new Customer("Lara", "lara@google.com", "lara01", "Yabcdef2", 2001, 3, 3);
